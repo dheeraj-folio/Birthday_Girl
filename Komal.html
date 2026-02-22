@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Magic for Bestie ✨</title>
+         <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            scroll-behavior: smooth;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym833.cur'), auto;
+            overflow-x: hidden;
+        }
+
+        .cursive { font-family: 'Dancing Script', cursive; }
+
+        /* Animated Pastel Background */
+        .bg-gradient-pastel {
+            background: linear-gradient(-45deg, #FFD1DC, #B2E2F2, #E6E6FA, #FFFFFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .polaroid {
+            background: white;
+            padding: 8px 8px 24px 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+
+        .polaroid:hover { transform: scale(1.03) rotate(0deg) !important; z-index: 10; }
+
+        /* Hide scrollbar */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-gradient-pastel min-h-screen">
+
+    <div class="fixed top-0 left-0 w-full h-8 z-50 opacity-60 pointer-events-none" 
+         style="background: radial-gradient(circle, #fff 10%, transparent 20%); background-size: 30px 30px;"></div>
+
+    <audio id="bdayMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-Instrumental.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="main-card" class="min-h-screen flex items-center justify-center p-4 md:p-6">
+        <div class="relative z-20 max-w-sm md:max-w-md w-full animate__animated animate__fadeInUp">
+            
+            <div class="absolute -top-12 -left-4 floating text-3xl md:text-4xl">🎈</div>
+            <div class="absolute -top-8 -right-4 floating text-3xl md:text-4xl" style="animation-delay: 1.5s;">✨</div>
+
+            <div class="bg-white/70 backdrop-blur-lg rounded-[2rem] p-6 md:p-8 shadow-2xl border-4 border-white text-center">
+                <h1 class="cursive text-3xl md:text-4xl text-pink-400 mb-2 leading-tight">
+                    Happy Birthday Komal 💖✨
+                </h1>
+                <p class="text-blue-400 font-semibold text-sm md:text-base mb-6">To my best friend 💕</p>
+
+                <div class="relative inline-block mb-6">
+                    <div class="polaroid rotate-[-2deg] border border-pink-100 mx-auto">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" 
+                             class="w-36 h-48 md:w-44 md:h-56 object-cover rounded-sm">
+                    </div>
+                    <span class="absolute -top-2 -right-2 text-xl md:text-2xl">🦋</span>
+                </div>
+
+                <div class="text-gray-600 space-y-3 text-sm md:text-base mb-8 px-2 leading-relaxed">
+                    <p>Dear <span class="text-pink-500 font-bold">[ Komal ji ]</span> 💕</p>
+                    <p>You make my world brighter just by being in it. I’m so lucky to have you.</p>
+                    <p class="font-semibold text-pink-400 italic">Stay cute, stay amazing, stay happy, Stay strong, stay smiling, and stay exactly the way you are 💖</p>
+                </div>
+
+                <button onclick="unlockSurprise()" 
+                        class="w-full md:w-auto bg-pink-300  from-pink-300 to-lavender-300 hover:from-pink-400 hover:to-purple-400 text-pink-400 font-bold py-4 px-10 rounded-full shadow-lg transform transition active:scale-95 animate-pulse">
+                    Tap for Surprise 🎁💗
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery-page" class="hidden min-h-screen p-4 md:p-12 bg-white/40 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="cursive text-4xl md:text-6xl text-pink-500 mb-4">Our Magical Moments</h2>
+            <p class="text-gray-500 mb-8 md:mb-12 italic text-sm md:text-lg">"Every photo has a story, every story has you."</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="polaroid rotate-1"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400" class="w-full h-64 object-cover"></div>
+                <div class="polaroid rotate-[-2deg]"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400" class="w-full h-64 object-cover"></div>
+                <div class="polaroid rotate-2"><img src="https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?w=400" class="w-full h-64 object-cover"></div>
+                <div class="polaroid rotate-[-1deg]"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400" class="w-full h-64 object-cover"></div>
+                <div class="polaroid rotate-3"><img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400" class="w-full h-64 object-cover"></div>
+                <div class="polaroid rotate-[-3deg]"><img src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?w=400" class="w-full h-64 object-cover"></div>
+            </div>
+
+            <div class="mt-16 pb-12">
+                <p class="cursive text-2xl md:text-4xl text-blue-400 px-4">
+                    You are my favorite human in the whole universe 🌎💞
+                </p>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                        class="mt-8 text-pink-400 text-xs md:text-sm font-bold uppercase tracking-widest hover:tracking-[0.2em] transition-all">
+                    Back to Top ↑
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Start Music on click (Necessary for mobile browsers)
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bdayMusic');
+            audio.volume = 0.3;
+            audio.play().catch(e => console.log("Audio play blocked"));
+        }, { once: true });
+
+        function unlockSurprise() {
+            // Heart/Sparkle Rain
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 25, spread: 360, ticks: 60, zIndex: 100 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+
+                const particleCount = 40 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#FFC0CB', '#FF69B4', '#E6E6FA']
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#B2E2F2', '#FFB6C1', '#FFFFFF']
+                }));
+            }, 250);
+
+            // Reveal Gallery with Animation
+            const gallery = document.getElementById('gallery-page');
+            gallery.classList.remove('hidden');
+            gallery.classList.add('animate__animated', 'animate__fadeIn');
+
+            // Delay scroll slightly for the confetti to pop first
+            setTimeout(() => {
+                gallery.scrollIntoView({ behavior: 'smooth' });
+            }, 800);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bestie! ✨</title>
+        <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym833.cur'), auto;
+            overflow-x: hidden;
+        }
+
+        .cursive { font-family: 'Dancing Script', cursive; }
+
+        /* Animated Gradient Background */
+        .bg-gradient-pastel {
+            background: linear-gradient(-45deg, #FFD1DC, #B2E2F2, #E6E6FA, #FFFFFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Fairy Lights Effect */
+        .fairy-lights {
+            height: 50px;
+            background: radial-gradient(circle, #fff 10%, transparent 20%);
+            background-size: 50px 50px;
+            filter: drop-shadow(0 0 10px #fff);
+            opacity: 0.6;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 1rem 1rem 3rem 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gradient-pastel min-h-screen flex items-center justify-center p-4">
+
+    <div class="fixed top-0 left-0 w-full fairy-lights z-10"></div>
+
+    <audio id="bdayMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-Instrumental.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="relative z-20 max-w-md w-full animate__animated animate__fadeInUp">
+        
+        <div class="absolute -top-20 -left-10 floating opacity-70 text-4xl">🎈</div>
+        <div class="absolute -top-10 -right-10 floating opacity-70 text-4xl" style="animation-delay: 1s;">🌸</div>
+
+        <div class="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-2xl border-4 border-white/80 text-center relative overflow-hidden">
+            
+            <h1 class="cursive text-4xl text-pink-400 mb-2 drop-shadow-sm">
+                Happy Birthday My Cutie Bestie 💖✨
+            </h1>
+            <p class="text-blue-400 font-semibold mb-6">To my Best Friend 💕</p>
+
+            <div class="relative inline-block mb-8">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1518893063132-36e46dbe2428?auto=format&fit=crop&q=80&w=300" 
+                         alt="Bestie" 
+                         class="w-48 h-60 object-cover rounded-sm">
+                    <div class="absolute -top-3 -left-3 text-2xl">🦋</div>
+                    <div class="absolute -bottom-2 -right-2 text-2xl">✨</div>
+                </div>
+                <span class="absolute top-0 right-0 animate-pulse">💗</span>
+                <span class="absolute bottom-10 -left-4 animate-bounce">🎀</span>
+            </div>
+
+            <div class="text-gray-600 space-y-4 text-sm md:text-base leading-relaxed mb-8">
+                <p>Dear <span class="text-pink-500 font-bold">[Her Name]</span> 💕</p>
+                <p>You are my sunshine, my happiness, and my safe place. Life is so much more beautiful because you are in it.</p>
+                <p>I hope your birthday is filled with love, cake, laughter and magical moments ✨</p>
+                <p class="font-semibold text-pink-400">Stay cute, stay amazing, stay mine forever 💖</p>
+            </div>
+
+            <button onclick="showSurprise()" 
+                    class="bg-pink-300 hover:bg-pink-400 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95">
+                Tap for Surprise 🎁💗
+            </button>
+        </div>
+    </main>
+
+    <div id="surprisePopup" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-pink-100/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl p-8 text-center shadow-2xl border-2 border-pink-200 animate__animated animate__zoomIn">
+            <div class="text-6xl mb-4">🌎💞</div>
+            <h2 class="cursive text-3xl text-pink-500 mb-4">You are my favorite human in the whole universe</h2>
+            <button onclick="closePopup()" class="text-sm text-gray-400 underline mt-4">Close with love</button>
+        </div>
+    </div>
+
+    <script>
+        // Start Music on first interaction (Browser policy)
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bdayMusic');
+            audio.volume = 0.2;
+            audio.play();
+        }, { once: true });
+
+        function showSurprise() {
+            // Heart Rain Effect
+            var end = Date.now() + (3 * 1000);
+            var colors = ['#FFC0CB', '#FFB6C1', '#FF69B4'];
+
+            (function frame() {
+              confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors,
+                shapes: ['circle']
+              });
+              confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors,
+                shapes: ['circle']
+              });
+
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            }());
+
+            // Show Popup
+            document.getElementById('surprisePopup').classList.remove('hidden');
+        }
+
+        function closePopup() {
+            document.getElementById('surprisePopup').classList.add('hidden');
+        }
+    </script>
+</body>
+</html> -->
